@@ -32,7 +32,7 @@
 
     <!-- ── NAVIGATION ───────────────────────────────────── -->
     <nav class="navbar nav" id="nav">
-        <div class="container d-flex align-items-center justify-content-between">
+        <div class="container d-flex align-items-center justify-content-between position-relative">
 
             <a href="index.html" class="navbar-brand nav-logo" title="Go to Home"
                 style="display:flex;align-items:center;">
@@ -376,20 +376,22 @@
                         </div>
 
                         <div class="gallery-right-footer">
-                            <!-- Default Button -->
-                            <a href="#" class="btn gallery-btn-primary" id="galleryLiveBtn" target="_blank"
-                                rel="noopener noreferrer">
-                                <i class="bi bi-box-arrow-up-right me-2"></i>Live Demo
-                            </a>
-                            <a href="#" class="btn gallery-btn-secondary" id="galleryCodeBtn" target="_blank"
-                                rel="noopener noreferrer">
-                                <i class="bi bi-github me-2"></i>View Code
-                            </a>
-                            <!-- For Prototype Only -->
-                            <a href="#" class="btn gallery-btn-primary gallery-btn-hidden" id="galleryprototypeBtn"
-                                target="_blank" rel="noopener noreferrer">
-                                <i class="bi bi-box-arrow-up-right me-2"></i>View Prototype
-                            </a>
+                            <div class="gallery-btn-group">
+                                <a href="#" class="btn gallery-btn-primary" id="galleryLiveBtn" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <i class="bi bi-box-arrow-up-right me-2"></i>Live Demo
+                                </a>
+                                <a href="#" class="btn gallery-btn-secondary" id="galleryCodeBtn" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <i class="bi bi-github me-2"></i>View Code
+                                </a>
+                                <!-- For Prototype Only -->
+                                <a href="#" class="btn gallery-btn-primary gallery-btn-hidden" id="galleryprototypeBtn"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <i class="bi bi-box-arrow-up-right me-2"></i>View Prototype
+                                </a>
+                            </div>
+                            <div class="gallery-btn-notes" id="galleryBtnNotes"></div>
                         </div>
                     </div>
 
@@ -587,10 +589,23 @@
             const codeBtn = document.getElementById('galleryCodeBtn');
             const prototypeBtn = document.getElementById('galleryprototypeBtn'); // Maps to your prototype button ID
 
+            const notes = [];
+            const notesEl = document.getElementById('galleryBtnNotes');
+
+            const isPrototypeOnly = p.prototypeUrl && !p.liveUrl && !p.codeUrl;
+
             // Default Live Demo button
-            if (p.liveUrl) {
+            if (!isPrototypeOnly && p.liveUrl) {
                 liveBtn.href = p.liveUrl;
+                liveBtn.classList.remove('gallery-btn-disabled');
                 liveBtn.classList.remove('gallery-btn-hidden');
+                liveBtn.setAttribute('aria-disabled', 'false');
+            } else if (!isPrototypeOnly) {
+                liveBtn.href = '#';
+                liveBtn.classList.add('gallery-btn-disabled');
+                liveBtn.classList.remove('gallery-btn-hidden');
+                liveBtn.setAttribute('aria-disabled', 'true');
+                notes.push('Live Demo');
             } else {
                 liveBtn.classList.add('gallery-btn-hidden');
             }
@@ -604,11 +619,25 @@
             }
 
             // View Code button
-            if (p.codeUrl) {
+            if (!isPrototypeOnly && p.codeUrl) {
                 codeBtn.href = p.codeUrl;
+                codeBtn.classList.remove('gallery-btn-disabled');
                 codeBtn.classList.remove('gallery-btn-hidden');
+                codeBtn.setAttribute('aria-disabled', 'false');
+            } else if (!isPrototypeOnly) {
+                codeBtn.href = '#';
+                codeBtn.classList.add('gallery-btn-disabled');
+                codeBtn.classList.remove('gallery-btn-hidden');
+                codeBtn.setAttribute('aria-disabled', 'true');
+                notes.push('View Code');
             } else {
                 codeBtn.classList.add('gallery-btn-hidden');
+            }
+
+            if (notes.length) {
+                notesEl.innerHTML = `<p class="gallery-btn-note"><em>*${notes.join(' and ')} link${notes.length > 1 ? 's are' : ' is'} available soon*</em></p>`;
+            } else {
+                notesEl.innerHTML = '';
             }
 
             // Also call image rendering so the image panel actually populates!
