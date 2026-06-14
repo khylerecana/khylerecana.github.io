@@ -207,6 +207,7 @@ img {
 /* ── 6. NAVIGATION (MOBILE OFFCANVAS) ────────────────────── */
 .mobile-offcanvas {
   top: 64px !important;
+  height: calc(100% - 64px) !important;
   background: rgba(10, 14, 26, 0.99) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -221,6 +222,7 @@ img {
 
 .offcanvas-backdrop {
   top: 64px !important;
+  height: calc(100% - 64px) !important;
 }
 
 .mobile-nav-profile {
@@ -554,7 +556,7 @@ img {
 }
 
 .hero-description {
-  font-size: 1.12rem;
+  font-size: 1rem;
   color: var(--muted-foreground);
   max-width: 36rem;
   margin-bottom: 2rem;
@@ -1163,20 +1165,32 @@ img {
   padding: 1rem 1.5rem;
   border-top: 1px solid var(--border);
   display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.gallery-btn-group {
+  display: flex;
+  justify-content: flex-start;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .gallery-btn-primary {
-  flex: 1;
+  width: 170px;
   font-size: 13px;
   font-weight: 500;
-  padding: 8px 0;
+  padding: 10px 0;
   background: transparent;
   color: #fff;
   border: none;
   border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   text-align: center;
-  transition: color 0.2s;
+  transition: color 0.2s, background 0.2s, border 0.2s;
 }
 
 .gallery-btn-primary:hover {
@@ -1185,21 +1199,41 @@ img {
 }
 
 .gallery-btn-secondary {
-  flex: 1;
+  width: 170px;
   font-size: 13px;
   font-weight: 500;
-  padding: 8px 0;
+  padding: 10px 0;
   background: transparent;
   color: var(--secondary);
   border: none;
   border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   text-align: center;
-  transition: color 0.2s;
+  transition: color 0.2s, background 0.2s, border 0.2s;
 }
 
 .gallery-btn-secondary:hover {
   color: var(--secondary-foreground);
   opacity: 1;
+}
+
+.gallery-btn-disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.gallery-btn-note {
+  margin: 0;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.4;
 }
 
 .gallery-btn-hidden {
@@ -1402,11 +1436,41 @@ img {
   scroll-snap-align: start;
 }
 
+.achievements {
+  position: relative;
+  /* make sure this is already set, add if not */
+}
+
+.ach-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(124, 58, 237, 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(192, 132, 252, 0.13) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 10%, rgba(99, 102, 241, 0.1) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ach-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.achievements .container {
+  position: relative;
+  z-index: 1;
+}
+
 /* ── 16. ACCORDION ACHIEVEMENTS ──────────────────────────────── */
 .ac-item {
   border-radius: 12px;
   overflow: hidden;
-  background: #0f172a;
+  background: var(--card);
   border-left: 3px solid transparent;
   transition: border-color 0.25s, background 0.25s;
   height: 100%;
@@ -1421,16 +1485,16 @@ img {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 14px 16px;
+  padding: 20px 20px;
   cursor: pointer;
   user-select: none;
 }
 
 .ac-num {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.2);
-  width: 20px;
+  color: var(--primary);
+  width: 24px;
   flex-shrink: 0;
   font-family: 'Playfair Display', serif;
   padding-top: 1px;
@@ -1450,9 +1514,9 @@ img {
 }
 
 .ac-title {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--foreground);
   line-height: 1.4;
   transition: color 0.25s;
 }
@@ -1462,12 +1526,12 @@ img {
 }
 
 .ac-date {
-  font-size: 10px;
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.25);
 }
 
 .ac-chevron {
-  font-size: 11px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.2);
   flex-shrink: 0;
   transition: transform 0.25s, color 0.25s;
@@ -1481,7 +1545,7 @@ img {
 
 .ac-body {
   display: none;
-  padding: 0 16px 14px 48px;
+  padding: 0 20px 20px 58px;
   border-top: 1px solid rgba(124, 110, 245, 0.1);
 }
 
@@ -1492,8 +1556,8 @@ img {
 }
 
 .ac-img {
-  width: 90px;
-  height: 65px;
+  width: 120px;
+  height: 88px;
   border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
@@ -1509,7 +1573,7 @@ img {
 }
 
 .ac-desc {
-  font-size: 12px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
   line-height: 1.65;
   margin: 10px 0 0;
@@ -1521,11 +1585,11 @@ img {
 }
 
 .group-title {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--foreground);
   margin-bottom: 12px;
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -1605,7 +1669,6 @@ img {
     min-height: auto;
   }
 
-  /* Stack the two Bootstrap columns vertically */
   .hero-content {
     flex-direction: column !important;
     align-items: stretch !important;
@@ -1613,15 +1676,11 @@ img {
     gap: 1.25rem !important;
   }
 
-  /* ── TOP ROW: avatar + pill/name side by side ── */
-
-  /* Put avatar first */
   .hero-visual {
     order: -1;
     width: 100% !important;
     max-width: 100% !important;
     padding: 0 !important;
-    /* Float left so text wraps beside it */
     float: left;
     margin-right: 1rem;
     margin-bottom: 0.5rem;
@@ -1642,14 +1701,12 @@ img {
     display: none;
   }
 
-  /* Text column — pill + name sit beside avatar via clearfix */
   .hero-text {
     width: 100% !important;
     max-width: 100% !important;
     text-align: left !important;
     padding: 0 !important;
     overflow: hidden;
-    /* creates BFC so text wraps beside floated avatar */
   }
 
   .hero-pill {
@@ -1673,7 +1730,6 @@ img {
 
   .hero-description {
     clear: both;
-    /* forces below the floated avatar */
     font-size: 0.9rem;
     line-height: 1.65;
     margin-bottom: 1.25rem;
@@ -1727,5 +1783,11 @@ img {
 
   .gallery-img-area {
     height: 220px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .nav .position-absolute.start-50 {
+    display: none !important;
   }
 }
