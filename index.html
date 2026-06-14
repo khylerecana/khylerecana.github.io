@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khyle Recaña | Home</title>
+    <title>Khyle Recaña | Portfolio</title>
     <meta name="description"
         content="Personal portfolio of Khyle Recaña - Frontend Developer and Aspiring Data Analyst.">
 
@@ -33,7 +33,7 @@
 
     <!-- ── NAVIGATION ───────────────────────────────────── -->
     <nav class="navbar nav" id="nav">
-        <div class="container d-flex align-items-center justify-content-between">
+        <div class="container d-flex align-items-center justify-content-between position-relative">
 
             <!-- Logo -->
             <a href="index.html" class="navbar-brand nav-logo" title="Go to Home"
@@ -54,52 +54,53 @@
             </div>
 
             <!-- Mobile hamburger -->
-            <button class="navbar-toggler border-0 p-1 shadow-none d-lg-none" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0 p-1 shadow-none d-lg-none" type="button"
+                id="mobileMenuToggle" aria-label="Toggle navigation">
                 <i class="bi bi-list fs-2 text-white"></i>
             </button>
         </div>
-
-        <!-- Mobile Offcanvas -->
-        <div class="offcanvas offcanvas-end mobile-offcanvas" tabindex="-1" id="mobileMenu">
-            <div class="offcanvas-body d-flex flex-column p-4">
-
-                <!-- Profile -->
-                <div class="mobile-nav-profile">
-                    <div class="mobile-nav-avatar">
-                        <img src="static/images/Logo.svg" alt="KR Logo"
-                            style="width:22px;height:22px;filter:brightness(0) invert(1);">
-                    </div>
-                    <div>
-                        <p class="mobile-nav-name">Khyle Recaña</p>
-                        <p class="mobile-nav-role">Frontend Dev · PUP 2nd Year</p>
-                    </div>
-                </div>
-
-                <div class="mobile-nav-divider"></div>
-
-                <!-- Links (no active on home — neither page is "selected") -->
-                <p class="mobile-nav-section-label">Navigation</p>
-                <a href="projects.html#projects" class="mobile-nav-link">
-                    <span class="mobile-nav-icon"><i class="bi bi-folder2"></i></span>
-                    Projects
-                </a>
-                <a href="achievements.html#achievements" class="mobile-nav-link">
-                    <span class="mobile-nav-icon"><i class="bi bi-trophy"></i></span>
-                    Achievements
-                </a>
-
-                <!-- Footer CTA -->
-                <div class="mobile-nav-footer mt-auto">
-                    <p class="mobile-nav-footer-sub">Ready to collaborate?</p>
-                    <a href="index.html#contact" class="btn btn-primary w-100 rounded-pill" data-bs-dismiss="offcanvas">
-                        <i class="bi bi-envelope me-2"></i>Let's Talk
-                    </a>
-                </div>
-
-            </div>
-        </div>
     </nav>
+
+    <!-- Mobile Offcanvas (outside nav to avoid stacking-context issues) -->
+    <div class="mobile-offcanvas-overlay" id="mobileOverlay"></div>
+    <div class="mobile-offcanvas" id="mobileMenu" aria-hidden="true">
+        <div class="offcanvas-body d-flex flex-column p-4">
+
+            <!-- Profile -->
+            <div class="mobile-nav-profile">
+                <div class="mobile-nav-avatar">
+                    <img src="static/images/Logo.svg" alt="KR Logo"
+                        style="width:22px;height:22px;filter:brightness(0) invert(1);">
+                </div>
+                <div>
+                    <p class="mobile-nav-name">Khyle Recaña</p>
+                    <p class="mobile-nav-role">Frontend Dev · PUP 2nd Year</p>
+                </div>
+            </div>
+
+            <div class="mobile-nav-divider"></div>
+
+            <!-- Links -->
+            <p class="mobile-nav-section-label">Navigation</p>
+            <a href="projects.html#projects" class="mobile-nav-link">
+                <span class="mobile-nav-icon"><i class="bi bi-folder2"></i></span>
+                Projects
+            </a>
+            <a href="achievements.html#achievements" class="mobile-nav-link">
+                <span class="mobile-nav-icon"><i class="bi bi-trophy"></i></span>
+                Achievements
+            </a>
+
+            <!-- Footer CTA -->
+            <div class="mobile-nav-footer mt-auto">
+                <p class="mobile-nav-footer-sub">Ready to collaborate?</p>
+                <a href="index.html#contact" class="btn btn-primary w-100 rounded-pill" id="mobileMenuClose">
+                    <i class="bi bi-envelope me-2"></i>Let's Talk
+                </a>
+            </div>
+
+        </div>
+    </div>
 
     <!-- ── HERO ─────────────────────────────────────────── -->
     <section class="hero d-flex align-items-center">
@@ -295,6 +296,36 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
         document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Custom mobile menu (bypasses Bootstrap offcanvas to avoid scroll glitching)
+        const menuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            mobileOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
+        });
+
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+        // Close on any nav link click
+        mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
     </script>
 
 </body>
