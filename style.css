@@ -837,9 +837,17 @@ img {
   transition: border-color 0.2s, background 0.2s;
 }
 
-.tool-tag i {
+.tool-tag i,
+.tool-tag svg {
   color: var(--primary);
   opacity: 0.85;
+}
+
+.wireshark-icon {
+  width: 1em;
+  height: 1em;
+  min-width: 1em;
+  min-height: 1em;
 }
 
 .tool-tag:hover {
