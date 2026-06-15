@@ -811,11 +811,6 @@ img {
   font-weight: 500;
 }
 
-.academic-divider {
-  margin: 15px 0;
-  border: 0;
-  border-top: 1px solid var(--accent);
-}
 
 /* ── 11. TOOLS SECTION ───────────────────────────────────── */
 .tools-section {
@@ -824,20 +819,169 @@ img {
 }
 
 .tools-label {
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
+  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  color: var(--foreground);
   margin-bottom: 1.5rem;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Base card */
+.tool-card {
+  background: var(--card);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Per-category glow colors */
+.tool-card--frontend {
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 8%, transparent),
+    0 4px 24px -4px color-mix(in srgb, var(--primary) 22%, transparent),
+    0 0 40px -10px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.tool-card--frontend:hover {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 18%, transparent),
+    0 8px 32px -4px color-mix(in srgb, var(--primary) 36%, transparent),
+    0 0 60px -8px color-mix(in srgb, var(--primary) 28%, transparent);
+}
+
+.tool-card--backend {
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent),
+    0 4px 24px -4px color-mix(in srgb, var(--accent) 22%, transparent),
+    0 0 40px -10px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.tool-card--backend:hover {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent),
+    0 8px 32px -4px color-mix(in srgb, var(--accent) 36%, transparent),
+    0 0 60px -8px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+.tool-card--uiux {
+  border-color: color-mix(in srgb, var(--secondary) 25%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--secondary) 8%, transparent),
+    0 4px 24px -4px color-mix(in srgb, var(--secondary) 22%, transparent),
+    0 0 40px -10px color-mix(in srgb, var(--secondary) 18%, transparent);
+}
+
+.tool-card--uiux:hover {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--secondary) 18%, transparent),
+    0 8px 32px -4px color-mix(in srgb, var(--secondary) 36%, transparent),
+    0 0 60px -8px color-mix(in srgb, var(--secondary) 28%, transparent);
+}
+
+.tool-card--devtools {
+  border-color: color-mix(in srgb, var(--dusty-violet) 22%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--dusty-violet) 7%, transparent),
+    0 4px 24px -4px color-mix(in srgb, var(--dusty-violet) 20%, transparent),
+    0 0 40px -10px color-mix(in srgb, var(--dusty-violet) 15%, transparent);
+}
+
+.tool-card--devtools:hover {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--dusty-violet) 16%, transparent),
+    0 8px 32px -4px color-mix(in srgb, var(--dusty-violet) 32%, transparent),
+    0 0 60px -8px color-mix(in srgb, var(--dusty-violet) 24%, transparent);
+}
+
+/* Card header */
+.tool-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.tool-card-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.tool-card--frontend .tool-card-icon {
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+}
+
+.tool-card--backend .tool-card-icon {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+}
+
+.tool-card--uiux .tool-card-icon {
+  background: rgba(45, 212, 191, 0.12);
+  color: #2dd4bf;
+}
+
+.tool-card--devtools .tool-card-icon {
+  background: rgba(36, 197, 251, 0.12);
+  color: #277daf;
+}
+
+.tool-card-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.tool-card--frontend .tool-card-title {
+  color: #818cf8;
+}
+
+.tool-card--backend .tool-card-title {
+  color: #c084fc;
+}
+
+.tool-card--uiux .tool-card-title {
+  color: #2dd4bf;
+}
+
+.tool-card--devtools .tool-card-title {
+  color: #277daf;
+}
+
+/* Tags inside cards */
+.tool-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .tool-tag {
   display: inline-flex;
   align-items: center;
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--card);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--foreground);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
   transition: border-color 0.2s, background 0.2s;
 }
@@ -855,9 +999,24 @@ img {
   min-height: 1em;
 }
 
-.tool-tag:hover {
-  border-color: rgba(124, 110, 245, 0.4);
-  background: rgba(124, 110, 245, 0.07);
+.tool-card--frontend .tool-tag:hover {
+  border-color: rgba(99, 102, 241, 0.45);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.tool-card--backend .tool-tag:hover {
+  border-color: rgba(168, 85, 247, 0.45);
+  background: rgba(168, 85, 247, 0.08);
+}
+
+.tool-card--uiux .tool-tag:hover {
+  border-color: rgba(45, 212, 191, 0.45);
+  background: rgba(45, 212, 191, 0.08);
+}
+
+.tool-card--devtools .tool-tag:hover {
+  border-color: rgba(251, 191, 36, 0.45);
+  background: rgba(251, 191, 36, 0.08);
 }
 
 
