@@ -811,6 +811,11 @@ img {
   font-weight: 500;
 }
 
+.academic-divider {
+  margin: 15px 0;
+  border: 0;
+  border-top: 1px solid var(--accent);
+}
 
 /* ── 11. TOOLS SECTION ───────────────────────────────────── */
 .tools-section {
