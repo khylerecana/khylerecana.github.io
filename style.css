@@ -811,6 +811,13 @@ img {
   font-weight: 500;
 }
 
+.academic-divider {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(150deg, transparent, var(--accent), transparent);
+  margin: 1rem 0;
+}
+
 
 /* ── 11. TOOLS SECTION ───────────────────────────────────── */
 .tools-section {
