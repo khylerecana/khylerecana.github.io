@@ -885,14 +885,14 @@ img {
     0 0 60px -8px color-mix(in srgb, var(--accent) 28%, transparent);
 }
 
-.tool-card--uiux {
+.tool-card--frameworks {
   border-color: color-mix(in srgb, var(--secondary) 25%, transparent);
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--secondary) 8%, transparent),
     0 4px 24px -4px color-mix(in srgb, var(--secondary) 22%, transparent),
     0 0 40px -10px color-mix(in srgb, var(--secondary) 18%, transparent);
 }
 
-.tool-card--uiux:hover {
+.tool-card--frameworks:hover {
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--secondary) 18%, transparent),
     0 8px 32px -4px color-mix(in srgb, var(--secondary) 36%, transparent),
     0 0 60px -8px color-mix(in srgb, var(--secondary) 28%, transparent);
@@ -940,7 +940,7 @@ img {
   color: #c084fc;
 }
 
-.tool-card--uiux .tool-card-icon {
+.tool-card--frameworks .tool-card-icon {
   background: rgba(45, 212, 191, 0.12);
   color: #2dd4bf;
 }
@@ -965,7 +965,7 @@ img {
   color: #c084fc;
 }
 
-.tool-card--uiux .tool-card-title {
+.tool-card--frameworks .tool-card-title {
   color: #2dd4bf;
 }
 
@@ -999,13 +999,6 @@ img {
   opacity: 0.85;
 }
 
-.wireshark-icon {
-  width: 1em;
-  height: 1em;
-  min-width: 1em;
-  min-height: 1em;
-}
-
 .tool-card--frontend .tool-tag:hover {
   border-color: rgba(99, 102, 241, 0.45);
   background: rgba(99, 102, 241, 0.08);
@@ -1016,7 +1009,7 @@ img {
   background: rgba(168, 85, 247, 0.08);
 }
 
-.tool-card--uiux .tool-tag:hover {
+.tool-card--frameworks .tool-tag:hover {
   border-color: rgba(45, 212, 191, 0.45);
   background: rgba(45, 212, 191, 0.08);
 }
