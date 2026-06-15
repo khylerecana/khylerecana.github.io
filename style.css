@@ -1204,24 +1204,6 @@ img {
   min-width: 0;
 }
 
-.gallery-btn-primary,
-.gallery-btn-secondary {
-  flex: 0 1 auto;
-  max-width: 170px;
-  min-width: 140px;
-  font-size: 13px;
-  font-weight: 500;
-  padding: 10px 0;
-  background: transparent;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  text-align: center;
-  transition: color 0.2s, background 0.2s, border 0.2s;
-}
-
 @media (max-width: 576px) {
 
   .gallery-btn-primary,
@@ -1236,6 +1218,7 @@ img {
   opacity: 1;
 }
 
+.gallery-btn-primary,
 .gallery-btn-secondary {
   width: 170px;
   font-size: 13px;
