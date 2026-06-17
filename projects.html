@@ -98,6 +98,8 @@
     <!-- ── PROJECTS ──────────────────────────────────────── -->
     <section class="projects" id="projects">
         <div class="projects-bg"></div>
+        <div class="prj-mesh"></div>
+        <div class="prj-noise"></div>
         <div class="container relative">
             <div class="section-header animate-on-scroll">
                 <span class="section-label">Featured Work</span>
@@ -426,15 +428,19 @@
         });
 
         // Scroll-triggered animations
+        const scrollEls = document.querySelectorAll('.animate-on-scroll');
+        // assign a stagger delay variable per element (100ms apart)
+        scrollEls.forEach((el, i) => el.style.setProperty('--stagger', `${i * 100}ms`));
+
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => entry.target.classList.add('visible'), index * 100);
+                    entry.target.classList.add('visible');
                 }
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        scrollEls.forEach(el => observer.observe(el));
 
         // ── PROJECT DATA ─────────────────────────────────────────────
         const projects = [
@@ -702,6 +708,33 @@
                 openGallery(index);
             });
         });
+
+        // Spotlight hover & image/tag interactions
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('.project-card').forEach(card => {
+                // initialize vars
+                card.style.setProperty('--spot-x', '50%');
+                card.style.setProperty('--spot-y', '50%');
+                card.style.setProperty('--spot-opacity', '0');
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    card.style.setProperty('--spot-x', `${x}%`);
+                    card.style.setProperty('--spot-y', `${y}%`);
+                    card.style.setProperty('--spot-opacity', '0.22');
+                });
+
+                card.addEventListener('mouseenter', () => {
+                    card.style.setProperty('--spot-opacity', '0.22');
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.setProperty('--spot-opacity', '0');
+                });
+            });
+        }
 
         // Custom mobile menu
         const menuToggle = document.getElementById('mobileMenuToggle');
