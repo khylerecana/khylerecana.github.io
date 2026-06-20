@@ -50,14 +50,14 @@
                 <a href="index.html#contact" class="btn btn-primary text-nowrap">Let's Talk</a>
             </div>
 
-            <button class="navbar-toggler border-0 p-1 shadow-none d-lg-none" type="button"
-                id="mobileMenuToggle" aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0 p-1 shadow-none d-lg-none" type="button" id="mobileMenuToggle"
+                aria-label="Toggle navigation">
                 <i class="bi bi-list fs-2 text-white"></i>
             </button>
         </div>
     </nav>
 
-    <!-- Mobile Offcanvas (outside nav to avoid stacking-context issues) -->
+    <!-- Mobile Offcanvas -->
     <div class="mobile-offcanvas-overlay" id="mobileOverlay"></div>
     <div class="mobile-offcanvas" id="mobileMenu" aria-hidden="true">
         <div class="offcanvas-body d-flex flex-column p-4">
@@ -110,214 +110,26 @@
                 </p>
             </div>
 
-            <!-- Group 1: Achievements -->
-            <div class="achievements-group">
-                <div class="group-header animate-on-scroll">
-                    <h3 class="group-title">Achievements</h3>
-                </div>
-                <div class="row g-3 align-items-start">
-
-                    <!-- Achievement 1 -->
-                    <div class="col-12 col-lg-6 animate-on-scroll">
-                        <div class="ac-item open">
-                            <div class="ac-header" onclick="toggleAC(this.parentElement)">
-                                <span class="ac-num">01</span>
-                                <div class="ac-header-info">
-                                    <span class="ac-title">3rd Runner-Up · PUP Hackathon: UtHack ang Puhunan 2025</span>
-                                    <span class="ac-date">November 28, 2025</span>
-                                </div>
-                                <span class="ac-chevron"><i class="bi bi-chevron-down"></i></span>
-                            </div>
-                            <div class="ac-body">
-                                <div class="ac-img">
-                                    <img src="static/images/Top 3.JPG" alt="3rd Runner-Up"
-                                        onerror="this.style.display='none'">
-                                </div>
-                                <p class="ac-desc">Awarded 3rd Runner-Up among multi-disciplinary teams for developing
-                                    SagipQ, a smart community reporting tool assisting at-risk individuals.</p>
+            <!-- Radial Orbital Achievements -->
+            <div class="orbital-stage animate-on-scroll">
+                <div class="orbital-box">
+                    <div class="orbital-stars" id="orbitalStars"></div>
+                    <div class="orbital-wrap" id="orbitalWrap">
+                        <canvas id="orbitalCanvas"></canvas>
+                        <div class="orbital-popup" id="orbitalPopup">
+                            <div class="orbital-popup-img" id="orbitalPopupImgWrap"></div>
+                            <div class="orbital-popup-body">
+                                <div id="orbitalPopupTag"></div>
+                                <div class="orbital-popup-title" id="orbitalPopupTitle"></div>
+                                <div class="orbital-popup-date" id="orbitalPopupDate"></div>
+                                <div class="orbital-popup-desc" id="orbitalPopupDesc"></div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Achievement 2 -->
-                    <div class="col-12 col-lg-6 animate-on-scroll">
-                        <div class="ac-item">
-                            <div class="ac-header" onclick="toggleAC(this.parentElement)">
-                                <span class="ac-num">02</span>
-                                <div class="ac-header-info">
-                                    <span class="ac-title">Top Finalist · PUP Hackathon: UtHack ang Puhunan 2025</span>
-                                    <span class="ac-date">October 22, 2025</span>
-                                </div>
-                                <span class="ac-chevron"><i class="bi bi-chevron-down"></i></span>
-                            </div>
-                            <div class="ac-body">
-                                <div class="ac-img">
-                                    <img src="static/images/Finalist.jpg" alt="Top Finalist"
-                                        onerror="this.style.display='none'">
-                                </div>
-                                <p class="ac-desc">Recognized as a Top Finalist for presenting impactful design
-                                    prototypes and strong pitching dynamics during preliminary evaluations.</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+                <ul class="visually-hidden" id="orbitalFallbackList"></ul>
             </div>
-
-            <!-- Group 2: Certifications -->
-            <div class="achievements-group">
-                <div class="group-header animate-on-scroll">
-                    <h3 class="group-title">Technical Certifications & Workshops</h3>
-                </div>
-                <div class="row g-3">
-
-                    <!-- Cert 1 -->
-                    <div class="col-12 col-lg-6 animate-on-scroll">
-                        <div class="ac-item">
-                            <div class="ac-header" onclick="toggleAC(this.parentElement)">
-                                <span class="ac-num">01</span>
-                                <div class="ac-header-info">
-                                    <span class="ac-title">Introduction to IoT and Digital Transformation</span>
-                                    <span class="ac-date">July 14, 2026</span>
-                                </div>
-                                <span class="ac-chevron"><i class="bi bi-chevron-down"></i></span>
-                            </div>
-                            <div class="ac-body">
-                                <div class="ac-img">
-                                    <img src="static/images/Intro2IoT - badge.png" alt="IoT"
-                                        onerror="this.style.display='none'">
-                                </div>
-                                <p class="ac-desc">Learned fundamental Internet of Things (IoT) design patterns,
-                                    digital connectivity, and sensor deployment strategies.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cert 2 -->
-                    <div class="col-12 col-lg-6 animate-on-scroll">
-                        <div class="ac-item">
-                            <div class="ac-header" onclick="toggleAC(this.parentElement)">
-                                <span class="ac-num">02</span>
-                                <div class="ac-header-info">
-                                    <span class="ac-title">Operating System Basics</span>
-                                    <span class="ac-date">July 14, 2026</span>
-                                </div>
-                                <span class="ac-chevron"><i class="bi bi-chevron-down"></i></span>
-                            </div>
-                            <div class="ac-body">
-                                <div class="ac-img">
-                                    <img src="static/images/OS Basics - badge.png" alt="OS Basics"
-                                        onerror="this.style.display='none'">
-                                </div>
-                                <p class="ac-desc">Acquired knowledge covering process scheduling, memory allocation,
-                                    multi-tasking engines, and Unix/Linux terminal fundamentals.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cert 3 -->
-                    <div class="col-12 col-lg-6 animate-on-scroll">
-                        <div class="ac-item">
-                            <div class="ac-header" onclick="toggleAC(this.parentElement)">
-                                <span class="ac-num">03</span>
-                                <div class="ac-header-info">
-                                    <span class="ac-title">Business Model Dynamics and Start-up Creation</span>
-                                    <span class="ac-date">November 27, 2025</span>
-                                </div>
-                                <span class="ac-chevron"><i class="bi bi-chevron-down"></i></span>
-                            </div>
-                            <div class="ac-body">
-                                <div class="ac-img">
-                                    <img src="static/images/Business Model.jpg" alt="Business Model"
-                                        onerror="this.style.display='none'">
-                                </div>
-                                <p class="ac-desc">Explored lean start-up scaling models, core revenue structures,
-                                    value propositions, and customer segment discovery pipelines.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cert 4 -->
-                    <div class="col-12 col-lg-6 animate-on-scroll">
-                        <div class="ac-item">
-                            <div class="ac-header" onclick="toggleAC(this.parentElement)">
-                                <span class="ac-num">04</span>
-                                <div class="ac-header-info">
-                                    <span class="ac-title">Pitching Essentials and Building AI Apps with Flutter &
-                                        Firebase</span>
-                                    <span class="ac-date">October 22, 2025</span>
-                                </div>
-                                <span class="ac-chevron"><i class="bi bi-chevron-down"></i></span>
-                            </div>
-                            <div class="ac-body">
-                                <div class="ac-img">
-                                    <img src="static/images/Pitching Essentials.jpg" alt="Pitching Essentials"
-                                        onerror="this.style.display='none'">
-                                </div>
-                                <p class="ac-desc">Studied mobile application synthesis using Flutter, database
-                                    synchronization with Cloud Firebase, and persuasive pitching techniques.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cert 5 -->
-                    <div class="col-12 col-lg-6 animate-on-scroll">
-                        <div class="ac-item">
-                            <div class="ac-header" onclick="toggleAC(this.parentElement)">
-                                <span class="ac-num">05</span>
-                                <div class="ac-header-info">
-                                    <span class="ac-title">Artificial Intelligence, Blockchain & Design Thinking</span>
-                                    <span class="ac-date">October 15, 2025</span>
-                                </div>
-                                <span class="ac-chevron"><i class="bi bi-chevron-down"></i></span>
-                            </div>
-                            <div class="ac-body">
-                                <div class="ac-img">
-                                    <img src="static/images/AI & Blockchain.jpg" alt="AI & Blockchain"
-                                        onerror="this.style.display='none'">
-                                </div>
-                                <p class="ac-desc">Covered interactive cycles of customer empathy, problem
-                                    formulation, secure blockchain consensus layers, and responsive AI models.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Group 3: Leadership -->
-            <div class="achievements-group">
-                <div class="group-header animate-on-scroll">
-                    <h3 class="group-title">Roles & Leadership Experience</h3>
-                </div>
-                <div class="row g-3">
-
-                    <!-- Leadership 1 -->
-                    <div class="col-12 col-lg-6 animate-on-scroll">
-                        <div class="ac-item">
-                            <div class="ac-header" onclick="toggleAC(this.parentElement)">
-                                <span class="ac-num">01</span>
-                                <div class="ac-header-info">
-                                    <span class="ac-title">Head Frontend Developer and UI/UX Designer</span>
-                                    <span class="ac-date">PUP Hackathon: UtHack ang Puhunan 2025</span>
-                                </div>
-                                <span class="ac-chevron"><i class="bi bi-chevron-down"></i></span>
-                            </div>
-                            <div class="ac-body">
-                                <div class="ac-img">
-                                    <img src="static/images/leadership.jpg" alt="Leadership"
-                                        onerror="this.style.display='none'">
-                                </div>
-                                <p class="ac-desc">Led frontend engineering and mobile/web interaction wireframing,
-                                    aligning state endpoints with real-time backend controllers under strict deadlines.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+            <p class="orbital-hint">Tap or click a node to view details</p>
     </section>
 
     <!-- ── FOOTER ────────────────────────────────────────── -->
@@ -353,11 +165,6 @@
 
         document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-        // Accordion toggle function
-        function toggleAC(item) {
-            item.classList.toggle('open');
-        }
-
         // Custom mobile menu
         const menuToggle = document.getElementById('mobileMenuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -386,6 +193,328 @@
         mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
             link.addEventListener('click', closeMobileMenu);
         });
+
+        (function () {
+            const wrap = document.getElementById('orbitalWrap');
+            const canvas = document.getElementById('orbitalCanvas');
+            if (!wrap || !canvas) return;
+            const ctx = canvas.getContext('2d');
+            const popup = document.getElementById('orbitalPopup');
+
+            const TAU = Math.PI * 2;
+            const BASE = 520; // design size the geometry below is tuned for
+
+            const RING_DEFS = [
+                { r: 85, label: 'Achievements', color: 'rgba(245,158,11,0.55)', dot: '#f59e0b', dotBg: 'rgba(245,158,11,0.18)', labelColor: '#f59e0b' },
+                { r: 155, label: 'Certifications', color: 'rgba(99,102,241,0.5)', dot: '#6366f1', dotBg: 'rgba(99,102,241,0.18)', labelColor: '#818cf8' },
+                { r: 220, label: 'Leadership', color: 'rgba(236,72,153,0.45)', dot: '#ec4899', dotBg: 'rgba(236,72,153,0.15)', labelColor: '#f472b6' },
+            ];
+
+            // ring: 0 = Achievements, 1 = Certifications, 2 = Leadership
+            const RAW_NODES = [
+                {
+                    ring: 0, label: '3rd Place', sub: 'UtHack 2025', date: 'Nov 28, 2025',
+                    title: '3rd Runner-Up · PUP Hackathon: UtHack ang Puhunan 2025',
+                    desc: 'Awarded 3rd Runner-Up among multi-disciplinary teams for developing SagipQ, a smart community reporting tool assisting at-risk individuals.',
+                    icon: '🏆', cat: 'award', imgSrc: 'static/images/Top 3.JPG', speed: 0.00022
+                },
+                {
+                    ring: 0, label: 'Finalist', sub: 'UtHack 2025', date: 'Oct 22, 2025',
+                    title: 'Top Finalist · PUP Hackathon: UtHack ang Puhunan 2025',
+                    desc: 'Recognized as a Top Finalist for presenting impactful design prototypes and strong pitching dynamics during preliminary evaluations.',
+                    icon: '🎖', cat: 'award', imgSrc: 'static/images/Finalist.jpg', speed: 0.00022
+                },
+
+                {
+                    ring: 1, label: 'IoT & Digital', sub: 'Certification', date: 'Jul 14, 2026',
+                    title: 'Introduction to IoT and Digital Transformation',
+                    desc: 'Learned fundamental Internet of Things (IoT) design patterns, digital connectivity, and sensor deployment strategies.',
+                    icon: '📡', cat: 'cert', imgSrc: 'static/images/Intro2IoT - badge.png', speed: 0.0002
+                },
+                {
+                    ring: 1, label: 'OS Basics', sub: 'Certification', date: 'Jul 14, 2026',
+                    title: 'Operating System Basics',
+                    desc: 'Acquired knowledge covering process scheduling, memory allocation, multi-tasking engines, and Unix/Linux terminal fundamentals.',
+                    icon: '💾', cat: 'cert', imgSrc: 'static/images/OS Basics - badge.png', speed: 0.0002
+                },
+                {
+                    ring: 1, label: 'Biz Model', sub: 'Certification', date: 'Nov 27, 2025',
+                    title: 'Business Model Dynamics and Start-up Creation',
+                    desc: 'Explored lean start-up scaling models, core revenue structures, value propositions, and customer segment discovery pipelines.',
+                    icon: '📈', cat: 'cert', imgSrc: 'static/images/Business Model.jpg', speed: 0.0002
+                },
+                {
+                    ring: 1, label: 'Flutter & AI', sub: 'Certification', date: 'Oct 22, 2025',
+                    title: 'Pitching Essentials and Building AI Apps with Flutter & Firebase',
+                    desc: 'Studied mobile application synthesis using Flutter, database synchronization with Cloud Firebase, and persuasive pitching techniques.',
+                    icon: '📱', cat: 'cert', imgSrc: 'static/images/Pitching Essentials.jpg', speed: 0.0002
+                },
+                {
+                    ring: 1, label: 'AI & Blockchain', sub: 'Certification', date: 'Oct 15, 2025',
+                    title: 'Artificial Intelligence, Blockchain & Design Thinking',
+                    desc: 'Covered interactive cycles of customer empathy, problem formulation, secure blockchain consensus layers, and responsive AI models.',
+                    icon: '🧠', cat: 'cert', imgSrc: 'static/images/AI & Blockchain.jpg', speed: 0.0002
+                },
+
+                {
+                    ring: 2, label: 'Lead Dev', sub: 'UtHack 2025', date: '2025',
+                    title: 'Head Frontend Developer and UI/UX Designer',
+                    desc: 'Led frontend engineering and mobile/web interaction wireframing, aligning state endpoints with real-time backend controllers under strict deadlines.',
+                    icon: '💻', cat: 'lead', imgSrc: 'static/images/leadership.jpg', speed: 0.00015
+                },
+            ];
+
+            // Render an accessible text fallback (screen readers / SEO) from the same data
+            const fallbackList = document.getElementById('orbitalFallbackList');
+            if (fallbackList) {
+                const catName = { award: 'Achievement', cert: 'Certification', lead: 'Leadership' };
+                fallbackList.innerHTML = RAW_NODES.map(n =>
+                    `<li>${catName[n.cat]}: ${n.title} — ${n.date}. ${n.desc}</li>`
+                ).join('');
+            }
+
+            // Spread nodes evenly around their ring, starting at the top (-90°)
+            const counts = [0, 0, 0];
+            RAW_NODES.forEach(n => counts[n.ring]++);
+            const seen = [0, 0, 0];
+            const nodes = RAW_NODES.map(n => {
+                const i = seen[n.ring]++;
+                return Object.assign({}, n, { startAngle: -Math.PI / 2 + (i * TAU) / counts[n.ring] });
+            });
+
+            let angles = nodes.map(n => n.startAngle);
+            let selected = null;
+            let imgCache = {};
+
+            // Hub logo (replaces the "KR / Portfolio" text in the center)
+            let hubImg = new Image();
+            let hubLoaded = false;
+            hubImg.onload = () => { hubLoaded = true; draw(); };
+            hubImg.onerror = () => { hubLoaded = false; };
+            hubImg.src = 'static/images/Logo.svg';
+
+            // ---- Responsive geometry: recomputed from the wrap's actual rendered width/height ----
+            let WIDTH = BASE, HEIGHT = BASE, SCALE = 1, CX = BASE / 2, CY = BASE / 2;
+            let RINGS = [];
+            let POPUP_W = 215;
+
+            function f(min, base) { return Math.max(min, base * SCALE); }
+
+            function recalcGeometry() {
+                WIDTH = wrap.clientWidth || BASE;
+                HEIGHT = wrap.clientHeight || BASE;
+                SCALE = Math.min(WIDTH, HEIGHT) / BASE; // used for fonts/hub/icons so they don't stretch
+                const scaleX = WIDTH / BASE;
+                const scaleY = HEIGHT / BASE;
+                CX = WIDTH / 2; CY = HEIGHT / 2;
+                RINGS = RING_DEFS.map(r => Object.assign({}, r, {
+                    rx: r.r * scaleX, ry: r.r * scaleY,
+                    innerRx: (r.r - 7) * scaleX, innerRy: (r.r - 7) * scaleY
+                }));
+                POPUP_W = Math.max(165, Math.min(215, 215 * SCALE));
+                popup.style.width = POPUP_W + 'px';
+
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                canvas.width = WIDTH * dpr;
+                canvas.height = HEIGHT * dpr;
+                canvas.style.width = WIDTH + 'px';
+                canvas.style.height = HEIGHT + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+
+            function nodePos(i) {
+                const ring = RINGS[nodes[i].ring];
+                return { x: CX + Math.cos(angles[i]) * ring.rx, y: CY + Math.sin(angles[i]) * ring.ry };
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+                RINGS.forEach(ring => {
+                    ctx.beginPath(); ctx.ellipse(CX, CY, ring.rx, ring.ry, 0, 0, TAU);
+                    ctx.strokeStyle = ring.color; ctx.lineWidth = 1;
+                    ctx.setLineDash([5, 8]); ctx.stroke(); ctx.setLineDash([]);
+
+                    ctx.beginPath(); ctx.ellipse(CX, CY, ring.innerRx, ring.innerRy, 0, 0, TAU);
+                    ctx.strokeStyle = ring.color; ctx.lineWidth = 0.4;
+                    ctx.globalAlpha = 0.45;
+                    ctx.setLineDash([3, 10]); ctx.stroke(); ctx.setLineDash([]);
+                    ctx.globalAlpha = 1;
+
+                    ctx.font = f(8, 10) + 'px sans-serif';
+                    ctx.fillStyle = ring.labelColor;
+                    ctx.globalAlpha = 0.6;
+                    ctx.textAlign = 'center';
+                    ctx.fillText(ring.label, CX, CY - ring.ry - f(6, 8));
+                    ctx.globalAlpha = 1;
+                });
+
+                if (selected !== null) {
+                    const p = nodePos(selected);
+                    const col = RINGS[nodes[selected].ring];
+                    ctx.beginPath(); ctx.moveTo(CX, CY); ctx.lineTo(p.x, p.y);
+                    ctx.strokeStyle = col.dot;
+                    ctx.globalAlpha = 0.25; ctx.lineWidth = 0.8; ctx.stroke(); ctx.globalAlpha = 1;
+                }
+
+                const hubR = f(28, 44);
+                ctx.beginPath(); ctx.arc(CX, CY, hubR, 0, TAU);
+                ctx.fillStyle = 'rgba(99,102,241,0.14)'; ctx.fill();
+                ctx.strokeStyle = 'rgba(99,102,241,0.6)'; ctx.lineWidth = 1.5; ctx.stroke();
+
+                if (hubLoaded) {
+                    const pad = hubR * 0.62; // logo inset from the ring edge
+                    ctx.save();
+                    ctx.beginPath(); ctx.arc(CX, CY, hubR - 4, 0, TAU); ctx.clip();
+                    ctx.drawImage(hubImg, CX - pad, CY - pad, pad * 2, pad * 2);
+                    ctx.restore();
+                } else {
+                    ctx.font = '600 ' + f(9, 12) + 'px sans-serif'; ctx.fillStyle = '#e2e4ee';
+                    ctx.textAlign = 'center'; ctx.fillText('KR', CX, CY - 3 * SCALE);
+                    ctx.font = f(7, 9) + 'px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.32)';
+                    ctx.fillText('Portfolio', CX, CY + 11 * SCALE);
+                }
+
+                nodes.forEach((n, i) => {
+                    const p = nodePos(i);
+                    const col = RINGS[n.ring];
+                    const isSel = selected === i;
+                    const nr = f(isSel ? 24 : 18, isSel ? 30 : 24);
+
+                    ctx.beginPath(); ctx.arc(p.x, p.y, nr, 0, TAU);
+                    ctx.fillStyle = isSel ? col.dot : col.dotBg; ctx.fill();
+                    ctx.strokeStyle = col.dot; ctx.lineWidth = isSel ? 2 : 1.2; ctx.stroke();
+
+                    if (imgCache[i]) {
+                        ctx.save();
+                        ctx.beginPath(); ctx.arc(p.x, p.y, nr - 2, 0, TAU); ctx.clip();
+                        ctx.drawImage(imgCache[i], p.x - (nr - 2), p.y - (nr - 2), (nr - 2) * 2, (nr - 2) * 2);
+                        ctx.restore();
+                        ctx.beginPath(); ctx.arc(p.x, p.y, nr, 0, TAU);
+                        ctx.strokeStyle = col.dot; ctx.lineWidth = isSel ? 2.5 : 1.5; ctx.stroke();
+                    } else {
+                        ctx.font = f(8, isSel ? 13 : 10) + 'px sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.fillText(n.icon, p.x, p.y + 4 * SCALE);
+                    }
+
+                    ctx.font = f(7, 8) + 'px sans-serif';
+                    ctx.fillStyle = 'rgba(255,255,255,' + (isSel ? '0.8' : '0.55') + ')';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(n.label, p.x, p.y + nr + f(9, 11));
+                    ctx.font = f(6, 7) + 'px sans-serif';
+                    ctx.fillStyle = 'rgba(255,255,255,0.28)';
+                    ctx.fillText(n.sub, p.x, p.y + nr + f(16, 20));
+                });
+            }
+
+            function positionPopup(i) {
+                const p = nodePos(i);
+                const nr = f(24, 30);
+                const popupH = popup.offsetHeight || 230;
+                let left = p.x - POPUP_W / 2;
+                let top = p.y - nr - popupH - 16 * SCALE;
+                left = Math.max(4, Math.min(left, WIDTH - POPUP_W - 4));
+                if (top < 4) top = p.y + nr + 16 * SCALE;
+                top = Math.max(4, Math.min(top, HEIGHT - popupH - 4));
+                popup.style.left = left + 'px';
+                popup.style.top = top + 'px';
+            }
+
+            function showPopup(i) {
+                const n = nodes[i];
+                const tagLabel = { award: 'Award', cert: 'Certification', lead: 'Leadership' }[n.cat];
+                const tagCls = { award: 'orbital-tag-award', cert: 'orbital-tag-cert', lead: 'orbital-tag-lead' }[n.cat];
+
+                document.getElementById('orbitalPopupTag').innerHTML = '<span class="orbital-tag ' + tagCls + '">' + tagLabel + '</span>';
+                document.getElementById('orbitalPopupTitle').textContent = n.title;
+                document.getElementById('orbitalPopupDate').textContent = n.date;
+                document.getElementById('orbitalPopupDesc').textContent = n.desc;
+
+                const wrapImg = document.getElementById('orbitalPopupImgWrap');
+                const borderColors = { award: '#f59e0b', cert: '#6366f1', lead: '#ec4899' };
+                popup.style.border = '1px solid ' + borderColors[n.cat] + '66';
+
+                if (imgCache[i]) {
+                    const img = document.createElement('img');
+                    img.src = imgCache[i].src; img.alt = n.label;
+                    wrapImg.innerHTML = ''; wrapImg.appendChild(img);
+                    wrapImg.style.background = '';
+                } else {
+                    wrapImg.innerHTML = n.icon;
+                    wrapImg.style.background = 'linear-gradient(135deg,#1e1040,#0d0820)';
+                }
+
+                positionPopup(i);
+                popup.classList.add('visible');
+            }
+
+            function hidePopup() { popup.classList.remove('visible'); }
+
+            canvas.addEventListener('click', e => {
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = WIDTH / rect.width;
+                const scaleY = HEIGHT / rect.height;
+                const mx = (e.clientX - rect.left) * scaleX;
+                const my = (e.clientY - rect.top) * scaleY;
+                let hit = null;
+                nodes.forEach((n, i) => {
+                    const p = nodePos(i);
+                    if (Math.hypot(mx - p.x, my - p.y) < f(26, 32)) hit = i;
+                });
+                if (hit !== null) {
+                    if (selected === hit) { selected = null; hidePopup(); }
+                    else { selected = hit; showPopup(hit); }
+                } else { selected = null; hidePopup(); }
+            });
+
+            nodes.forEach((n, i) => {
+                const img = new Image();
+                img.onload = () => {
+                    imgCache[i] = img;
+                    if (selected === i) showPopup(i);
+                };
+                img.onerror = () => { };
+                img.src = n.imgSrc;
+            });
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    recalcGeometry();
+                    if (selected !== null) positionPopup(selected);
+                }, 150);
+            });
+
+            recalcGeometry();
+
+            function animate() {
+                nodes.forEach((n, i) => { if (selected !== i) angles[i] += n.speed; });
+                if (selected !== null) positionPopup(selected);
+                draw();
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+
+        (function () {
+            const starField = document.getElementById('orbitalStars');
+            if (!starField) return;
+            const STAR_COUNT = 40;
+            for (let i = 0; i < STAR_COUNT; i++) {
+                const star = document.createElement('div');
+                star.className = 'orbital-star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                const size = (Math.random() * 2 + 2).toFixed(1);
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.animationDuration = (2 + Math.random() * 4).toFixed(2) + 's';
+                star.style.animationDelay = (Math.random() * 5).toFixed(2) + 's';
+                starField.appendChild(star);
+            }
+        })();
     </script>
 
 </body>
