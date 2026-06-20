@@ -114,7 +114,9 @@
                     <div class="hero-pill">2nd Year at PUP Sto. Tomas</div>
                     <h1 class="hero-title">
                         Hi, I'm <br class="hero-title-break">
-                        <span class="gradient">Khyle Recaña</span>
+                        <span class="gradient" id="heroRotatingText" aria-hidden="true"></span><span class="hero-cursor"
+                            aria-hidden="true"></span>
+                        <span class="visually-hidden">Khyle Recaña, a Frontend Developer, a Data Analyst</span>
                     </h1>
                     <p class="hero-description text-muted-foreground">
                         Welcome to my portfolio. This space documents my continuous learning journey as a student
@@ -160,6 +162,7 @@
                         </div>
                         <div class="floating-badge floating-badge-1">Python</div>
                         <div class="floating-badge floating-badge-2">PHP</div>
+                        <div class="floating-badge floating-badge-3">HTML</div>
                     </div>
                 </div>
 
@@ -178,10 +181,12 @@
 
             <div class="row gy-5 about-content align-items-stretch">
                 <div class="col-12 col-lg-6 animate-on-scroll d-flex flex-column gap-4 justify-content-between">
-                    <p class="about-main-text text-foreground">
-                        Hello! I am <strong>Khyle Recaña</strong>, a second-year BS Information Technology
-                        student at the Polytechnic University of the Philippines – Sto. Tomas Campus.
-                    </p>
+                    <div class="about-quote">
+                        <p class="about-main-text about-quote-text text-foreground">
+                            Hello! I am <strong>Khyle Recaña</strong>, a second-year BS Information Technology
+                            student at the Polytechnic University of the Philippines – Sto. Tomas Campus.
+                        </p>
+                    </div>
                     <p class="about-description">
                         As an aspiring frontend developer and data analyst, I sit at the intersection of
                         creative user experiences and analytical insight. I love taking complex, messy
@@ -196,15 +201,32 @@
                 </div>
                 <div class="col-12 col-lg-6 animate-on-scroll">
                     <div class="about-card-academic">
-                        <div class="academic-icon">
-                            <i class="bi bi-mortarboard" aria-hidden="true"></i>
+                        <div class="academic-panel-header">
+                            <div class="academic-icon">
+                                <i class="bi bi-mortarboard" aria-hidden="true"></i>
+                            </div>
+                            <span class="academic-label">Academic Timeline</span>
                         </div>
-                        <div class="academic-label">Academic Base</div>
-                        <h3 class="academic-title">BS Information Technology</h3>
-                        <div class="academic-meta">2024 - Present • 2nd Year</div>
-                        <hr class="academic-divider">
-                        <h3 class="academic-title">STEM Strand</h3>
-                        <div class="academic-meta">2022 - 2024 • Honor Student</div>
+                        <div class="academic-timeline">
+                            <div class="timeline-item">
+                                <span class="timeline-dot timeline-dot--active"></span>
+                                <h3 class="academic-title">BS Information Technology</h3>
+                                <div class="academic-meta">2024 - Present • 2nd Year</div>
+                                <span class="academic-badge">
+                                    <i class="bi bi-award" aria-hidden="true"></i>
+                                    Consistent Dean's Lister
+                                </span>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-dot"></span>
+                                <h3 class="academic-title">STEM Strand</h3>
+                                <div class="academic-meta">2022 - 2024 • Graduated</div>
+                                <span class="academic-badge">
+                                    <i class="bi bi-award" aria-hidden="true"></i>
+                                    Honor Student
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -342,6 +364,57 @@
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 50);
         });
+
+        // Hero name rotation — typewriter effect
+        (function () {
+            const el = document.getElementById('heroRotatingText');
+            if (!el) return;
+
+            const phrases = ['Khyle Recaña', 'a Frontend Developer', 'a Data Analyst'];
+            const typeSpeed = 55;
+            const deleteSpeed = 35;
+            const cycleDuration = 10000;
+            const minHold = 1500;
+
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion) {
+                el.textContent = phrases[0];
+                return;
+            }
+
+            let phraseIndex = 0;
+
+            function cycle() {
+                const word = phrases[phraseIndex];
+                let charIndex = 0;
+
+                function type() {
+                    el.textContent = word.slice(0, charIndex);
+                    charIndex++;
+                    if (charIndex <= word.length) {
+                        setTimeout(type, typeSpeed);
+                    } else {
+                        const hold = Math.max(minHold, cycleDuration - word.length * (typeSpeed + deleteSpeed) - 300);
+                        setTimeout(erase, hold);
+                    }
+                }
+
+                function erase() {
+                    el.textContent = word.slice(0, charIndex);
+                    charIndex--;
+                    if (charIndex >= 0) {
+                        setTimeout(erase, deleteSpeed);
+                    } else {
+                        phraseIndex = (phraseIndex + 1) % phrases.length;
+                        setTimeout(cycle, 200);
+                    }
+                }
+
+                type();
+            }
+
+            cycle();
+        })();
 
         // Scroll-triggered animations
         const observer = new IntersectionObserver((entries) => {
