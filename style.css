@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: var(--background);
   color: var(--foreground);
   line-height: 1.6;
@@ -25,7 +25,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   line-height: 1.2;
 }
 
@@ -48,7 +48,6 @@ img {
 .relative {
   position: relative;
 }
-
 
 /* ── 2. CSS VARIABLES ────────────────────────────────────── */
 :root {
@@ -75,7 +74,6 @@ img {
   --shadow-card: 0 2px 12px -2px rgba(15, 23, 42, 0.2);
   --radius: 0.75rem;
 }
-
 
 /* ── 3. TYPOGRAPHY & LINKS ───────────────────────────────── */
 .section-header {
@@ -106,11 +104,13 @@ img {
 
 .section-title::before,
 .section-title::after {
-  content: '';
+  content: "";
   flex: 1;
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  box-shadow: -12px 0 0 -8px var(--accent), 12px 0 0 -8px var(--accent);
+  box-shadow:
+    -12px 0 0 -8px var(--accent),
+    12px 0 0 -8px var(--accent);
 }
 
 @media (min-width: 768px) {
@@ -127,12 +127,10 @@ img {
   margin: 0 auto;
 }
 
-
 /* ── 4. UTILITY ──────────────────────────────────────────── */
 .text-foreground {
   color: var(--foreground) !important;
 }
-
 
 /* ── 5. NAVIGATION (DESKTOP) ─────────────────────────────── */
 .nav {
@@ -155,7 +153,7 @@ img {
 }
 
 .nav-logo {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-foreground);
@@ -172,7 +170,10 @@ img {
   font-weight: 500;
   color: var(--foreground) !important;
   opacity: 0.8;
-  transition: color 0.2s, background 0.2s, opacity 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s,
+    opacity 0.2s;
   padding: 6px 12px !important;
   border-radius: 8px;
   line-height: 1;
@@ -202,7 +203,6 @@ img {
   box-shadow: none;
   outline: none;
 }
-
 
 /* ── 6. NAVIGATION (MOBILE OFFCANVAS) ────────────────────── */
 .mobile-offcanvas {
@@ -306,7 +306,9 @@ img {
   border-radius: 8px;
   text-decoration: none;
   margin-bottom: 2px;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 
 .mobile-nav-link:hover {
@@ -351,7 +353,6 @@ img {
   text-align: center;
   margin-bottom: 10px;
 }
-
 
 /* ── 7. BUTTONS ──────────────────────────────────────────── */
 .btn {
@@ -400,7 +401,6 @@ img {
   background: rgba(95, 17, 20, 0.15);
 }
 
-
 /* ── 8. ANIMATIONS & SCROLL REVEALS ─────────────────────── */
 @keyframes fadeInLeft {
   from {
@@ -427,7 +427,6 @@ img {
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0);
@@ -439,7 +438,6 @@ img {
 }
 
 @keyframes blobShift {
-
   0%,
   100% {
     border-radius: 45% 55% 50% 50% / 50% 50% 50% 50%;
@@ -459,7 +457,6 @@ img {
 }
 
 @keyframes blobShift2 {
-
   0%,
   100% {
     border-radius: 50% 45% 55% 50% / 50% 50% 50% 50%;
@@ -500,13 +497,19 @@ img {
 }
 
 .project-card::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(168, 85, 247, var(--spot-opacity, 0)) 0%, rgba(168, 85, 247, 0) 40%);
+  background-image: radial-gradient(
+    circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(168, 85, 247, var(--spot-opacity, 0)) 0%,
+    rgba(168, 85, 247, 0) 40%
+  );
   mix-blend-mode: screen;
-  transition: background-image 160ms linear, opacity 160ms linear;
+  transition:
+    background-image 160ms linear,
+    opacity 160ms linear;
 }
 
 /* Image hover scale + overlay lift */
@@ -516,11 +519,13 @@ img {
 }
 
 .project-image::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: rgba(6, 8, 15, 0.36);
-  transition: background 260ms ease, transform 260ms ease;
+  transition:
+    background 260ms ease,
+    transform 260ms ease;
   pointer-events: none;
 }
 
@@ -555,7 +560,6 @@ img {
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-
   .animate-on-scroll,
   .project-card-image,
   .project-image::after,
@@ -567,7 +571,6 @@ img {
     display: none !important;
   }
 }
-
 
 /* ── 9. HERO SECTION ─────────────────────────────────────── */
 .hero {
@@ -582,12 +585,20 @@ img {
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.12) 0%, transparent 40%);
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(168, 85, 247, 0.12) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(139, 92, 246, 0.12) 0%,
+      transparent 40%
+    );
   opacity: 0.9;
   pointer-events: none;
 }
@@ -669,7 +680,6 @@ img {
 }
 
 @keyframes heroCursorBlink {
-
   0%,
   50% {
     opacity: 1;
@@ -778,14 +788,19 @@ img {
 }
 
 .hero-avatar::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2rem;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
   height: 1.5rem;
-  background: radial-gradient(ellipse at center, rgba(215, 152, 164, 0.4) 0%, rgba(95, 17, 20, 0.15) 70%, transparent 100%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(215, 152, 164, 0.4) 0%,
+    rgba(95, 17, 20, 0.15) 70%,
+    transparent 100%
+  );
   filter: blur(18px);
   pointer-events: none;
 }
@@ -848,7 +863,12 @@ img {
 .about-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(215, 152, 164, 0.05) 50%, transparent 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(215, 152, 164, 0.05) 50%,
+    transparent 100%
+  );
 }
 
 .about-content {
@@ -925,11 +945,11 @@ img {
 }
 
 .about-quote::before {
-  content: '\201D';
+  content: "\201D";
   position: absolute;
   top: -1.85rem;
   left: -0.3rem;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 4.5rem;
   line-height: 1;
   color: rgba(168, 85, 247, 0.25);
@@ -937,7 +957,7 @@ img {
 }
 
 .about-quote-text {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-style: italic;
   font-size: 1.2rem;
   line-height: 1.7;
@@ -963,7 +983,7 @@ img {
 }
 
 .academic-timeline::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 5px;
   top: 0.4rem;
@@ -1019,7 +1039,7 @@ img {
 
 .tools-label {
   font-size: 1.5rem;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   color: var(--foreground);
   margin-bottom: 1.5rem;
 }
@@ -1043,7 +1063,9 @@ img {
   border-radius: 1rem;
   padding: 1.25rem;
   border: 1px solid var(--border);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .tool-card:hover {
@@ -1053,52 +1075,60 @@ img {
 /* Per-category glow colors */
 .tool-card--frontend {
   border-color: color-mix(in srgb, var(--primary) 25%, transparent);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 8%, transparent),
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--primary) 8%, transparent),
     0 4px 24px -4px color-mix(in srgb, var(--primary) 22%, transparent),
     0 0 40px -10px color-mix(in srgb, var(--primary) 18%, transparent);
 }
 
 .tool-card--frontend:hover {
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 18%, transparent),
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--primary) 18%, transparent),
     0 8px 32px -4px color-mix(in srgb, var(--primary) 36%, transparent),
     0 0 60px -8px color-mix(in srgb, var(--primary) 28%, transparent);
 }
 
 .tool-card--backend {
   border-color: color-mix(in srgb, var(--accent) 25%, transparent);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent),
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent),
     0 4px 24px -4px color-mix(in srgb, var(--accent) 22%, transparent),
     0 0 40px -10px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
 .tool-card--backend:hover {
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent),
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent),
     0 8px 32px -4px color-mix(in srgb, var(--accent) 36%, transparent),
     0 0 60px -8px color-mix(in srgb, var(--accent) 28%, transparent);
 }
 
 .tool-card--frameworks {
   border-color: color-mix(in srgb, var(--secondary) 25%, transparent);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--secondary) 8%, transparent),
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--secondary) 8%, transparent),
     0 4px 24px -4px color-mix(in srgb, var(--secondary) 22%, transparent),
     0 0 40px -10px color-mix(in srgb, var(--secondary) 18%, transparent);
 }
 
 .tool-card--frameworks:hover {
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--secondary) 18%, transparent),
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--secondary) 18%, transparent),
     0 8px 32px -4px color-mix(in srgb, var(--secondary) 36%, transparent),
     0 0 60px -8px color-mix(in srgb, var(--secondary) 28%, transparent);
 }
 
 .tool-card--devtools {
   border-color: color-mix(in srgb, var(--dusty-violet) 22%, transparent);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--dusty-violet) 7%, transparent),
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--dusty-violet) 7%, transparent),
     0 4px 24px -4px color-mix(in srgb, var(--dusty-violet) 20%, transparent),
     0 0 40px -10px color-mix(in srgb, var(--dusty-violet) 15%, transparent);
 }
 
 .tool-card--devtools:hover {
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--dusty-violet) 16%, transparent),
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--dusty-violet) 16%, transparent),
     0 8px 32px -4px color-mix(in srgb, var(--dusty-violet) 32%, transparent),
     0 0 60px -8px color-mix(in srgb, var(--dusty-violet) 24%, transparent);
 }
@@ -1182,7 +1212,9 @@ img {
   color: var(--foreground);
   font-size: 0.78rem;
   font-weight: 500;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
 }
 
 .tool-tag i,
@@ -1211,7 +1243,6 @@ img {
   background: rgba(251, 191, 36, 0.08);
 }
 
-
 /* ── 12. PROJECTS SECTION ────────────────────────────────── */
 .projects {
   padding: 6rem 0;
@@ -1235,9 +1266,21 @@ img {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 30%, rgba(168, 85, 247, 0.16) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 20%, rgba(99, 102, 241, 0.09) 0%, transparent 40%);
+    radial-gradient(
+      ellipse at 20% 30%,
+      rgba(168, 85, 247, 0.16) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 70%,
+      rgba(139, 92, 246, 0.12) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 60% 20%,
+      rgba(99, 102, 241, 0.09) 0%,
+      transparent 40%
+    );
   pointer-events: none;
   z-index: 0;
 }
@@ -1359,7 +1402,6 @@ img {
   color: var(--primary);
 }
 
-
 /* ── 13. GALLERY MODAL ───────────────────────────────────── */
 .gallery-dialog {
   max-width: 900px;
@@ -1446,7 +1488,9 @@ img {
   border-radius: 2px;
   background: rgba(255, 255, 255, 0.25);
   cursor: pointer;
-  transition: width 0.25s, background 0.25s;
+  transition:
+    width 0.25s,
+    background 0.25s;
   width: 6px;
 }
 
@@ -1502,7 +1546,7 @@ img {
 }
 
 .gallery-title {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--foreground);
@@ -1585,12 +1629,11 @@ img {
   align-items: center;
 }
 
-.gallery-btn-group>a {
+.gallery-btn-group > a {
   min-width: 0;
 }
 
 @media (max-width: 576px) {
-
   .gallery-btn-primary,
   .gallery-btn-secondary {
     flex: 1 1 100%;
@@ -1620,7 +1663,10 @@ img {
   justify-content: center;
   gap: 8px;
   text-align: center;
-  transition: color 0.2s, background 0.2s, border 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s,
+    border 0.2s;
 }
 
 .gallery-btn-secondary:hover {
@@ -1649,7 +1695,6 @@ img {
 .gallery-btn-hidden {
   display: none !important;
 }
-
 
 /* ── 14. CONTACT SECTION ─────────────────────────────────── */
 .contact {
@@ -1711,7 +1756,6 @@ img {
   display: inline-block;
 }
 
-
 /* ── 15. ACHIEVEMENTS SECTION ────────────────────────────── */
 .achievements {
   padding: 6rem 0;
@@ -1730,7 +1774,7 @@ img {
   scroll-snap-type: x proximity;
 }
 
-.achievement-scroll-wrapper .row>[class*='col-'] {
+.achievement-scroll-wrapper .row > [class*="col-"] {
   min-width: calc(100% - 1.5rem);
   flex: 0 0 calc(100% - 1.5rem);
   max-width: calc(100% - 1.5rem);
@@ -1745,9 +1789,21 @@ img {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 20%, rgba(124, 58, 237, 0.18) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(192, 132, 252, 0.13) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 10%, rgba(99, 102, 241, 0.1) 0%, transparent 40%);
+    radial-gradient(
+      ellipse at 20% 20%,
+      rgba(124, 58, 237, 0.18) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 80%,
+      rgba(192, 132, 252, 0.13) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 60% 10%,
+      rgba(99, 102, 241, 0.1) 0%,
+      transparent 40%
+    );
   pointer-events: none;
   z-index: 0;
 }
@@ -1802,7 +1858,9 @@ img {
   pointer-events: none;
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .orbital-popup.visible {
@@ -1894,8 +1952,10 @@ img {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 60px rgba(99, 102, 241, 0.08), inset 0 0 80px rgba(0, 0, 0, 0.6);
-} 
+  box-shadow:
+    0 0 60px rgba(99, 102, 241, 0.08),
+    inset 0 0 80px rgba(0, 0, 0, 0.6);
+}
 
 .orbital-stars {
   position: absolute;
@@ -1916,8 +1976,15 @@ img {
 }
 
 @keyframes orbitalStarTwinkle {
-  0%, 100% { opacity: 0; transform: scale(0.6); }
-  50% { opacity: 1; transform: scale(1.3); }
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -1936,7 +2003,6 @@ img {
     max-width: 360px;
     aspect-ratio: 3 / 7;
   }
-
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -1974,7 +2040,6 @@ img {
   gap: 0.25rem;
 }
 
-
 /* ── 18. RESPONSIVE OVERRIDES ────────────────────────────── */
 @media (min-width: 768px) {
   .hero-title {
@@ -1995,7 +2060,7 @@ img {
     justify-content: space-between;
   }
 
-  .achievement-scroll-wrapper .row>[class*='col-'] {
+  .achievement-scroll-wrapper .row > [class*="col-"] {
     min-width: calc(50% - 1.5rem);
     flex: 0 0 calc(50% - 1.5rem);
     max-width: calc(50% - 1.5rem);
@@ -2012,7 +2077,7 @@ img {
     height: 32rem;
   }
 
-  .achievement-scroll-wrapper .row>[class*='col-'] {
+  .achievement-scroll-wrapper .row > [class*="col-"] {
     min-width: calc(33.333% - 1rem);
     flex: 0 0 calc(33.333% - 1rem);
     max-width: calc(33.333% - 1rem);
@@ -2020,7 +2085,6 @@ img {
 }
 
 @media (max-width: 991px) {
-
   .hero {
     padding-top: 6rem;
     padding-bottom: 3rem;
@@ -2150,4 +2214,96 @@ img {
   .nav .position-absolute.start-50 {
     display: none !important;
   }
+}
+
+/* ── PROJECT FILTER BUTTONS ───────────────────────────── */
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin: -0.5rem 0 2rem;
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+}
+
+.project-filter-btn {
+  padding: 0.45rem 0.95rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.project-filter-btn:hover {
+  color: var(--foreground);
+  border-color: rgba(168, 85, 247, 0.5);
+  transform: none;
+}
+
+.project-filter-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.project-filter-btn.active {
+  color: var(--primary-foreground);
+  background: var(--gradient-hero);
+  border-color: transparent;
+  box-shadow: 0 10px 25px -12px rgba(124, 58, 237, 0.6);
+}
+
+/* ── BENTO LAYOUT IN GALLERY MODAL ───────────────────────── */
+.gallery-bento-frame {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+
+.gallery-img-area.is-bento {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 360px;
+}
+
+.gallery-img-area.is-bento .gallery-bento-frame {
+  display: block;
+}
+
+.gallery-img-area.is-bento .gallery-img,
+.gallery-img-area.is-bento .gallery-nav,
+.gallery-img-area.is-bento .gallery-indicators {
+  display: none;
+}
+
+
+/* ── BENTO THUMBNAIL ON THE PROJECT CARD ─────────────────── */
+.project-image.bento-thumb {
+  background: #0a0914; /* same dark panel as the pop-up */
+}
+
+.bento-thumb-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 960px;
+  height: 540px;
+  border: 0;
+  background: transparent;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(var(--thumb-scale, 0.36));
+  transform-origin: center;
 }
