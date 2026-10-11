@@ -600,7 +600,7 @@
             {
                 title: 'Bento Layout',
                 label: 'Web Development',
-                bento: true, // shows bento-gallery.html in the pop-up instead of images
+                bento: true, 
                 challenge: 'Activity 1 in Web Development (3rd Year, 1st Sem)',
                 features: [],
                 tags: ['HTML', 'CSS', 'JavaScript'],
@@ -609,7 +609,7 @@
                 type: 'Individual School Activity',
                 images: [],
                 liveUrl: '',
-                codeUrl: '#' // TODO: assign the View Code link later
+                codeUrl: 'https://github.com/khylerecana/WebDev_Projects'
             }
         ];
 
@@ -629,7 +629,6 @@
             const p = projects[currentProjectIndex];
             const images = p.images;
 
-            // Bento Layout shows the bento gallery and plain text instead of the image carousel
             const isBento = !!p.bento;
             const bentoFrame = document.getElementById('galleryBento');
             document.querySelector('.gallery-img-area').classList.toggle('is-bento', isBento);
@@ -671,7 +670,7 @@
             // FIXED SELECTORS HERE
             const liveBtn = document.getElementById('galleryLiveBtn');
             const codeBtn = document.getElementById('galleryCodeBtn');
-            const prototypeBtn = document.getElementById('galleryprototypeBtn'); // Maps to your prototype button ID
+            const prototypeBtn = document.getElementById('galleryprototypeBtn');
 
             const notes = [];
             const notesEl = document.getElementById('galleryBtnNotes');
@@ -705,7 +704,7 @@
             // View Code button
             if (!isPrototypeOnly && p.codeUrl) {
                 codeBtn.href = p.codeUrl;
-                codeBtn.target = p.codeUrl === '#' ? '_self' : '_blank'; // '#' = placeholder until the link is assigned
+                codeBtn.target = p.codeUrl === '#' ? '_self' : '_blank';
                 codeBtn.classList.remove('gallery-btn-disabled');
                 codeBtn.classList.remove('gallery-btn-hidden');
                 codeBtn.setAttribute('aria-disabled', 'false');
