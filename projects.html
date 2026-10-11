@@ -352,7 +352,7 @@
 
 
                 <!-- Project 8 — WebDev -->
-                <div class="col-12 col-md-6 col-lg-4 d-none" data-categories="webdev">
+                <div class="col-12 col-md-6 col-lg-4 d-none" data-categories="all webdev">
                     <div class="project-card animate-on-scroll h-100 d-flex flex-column">
                         <span class="project-label">Web Development</span>
                         <div class="project-image hero-bg bento-thumb">
@@ -609,7 +609,7 @@
                 creditLabel: 'Language Used',
                 type: 'Individual School Activity',
                 images: [],
-                liveUrl: '',
+                liveUrl: 'https://khylerecana.github.io/WebDev_Projects/bento-gallery.html',
                 codeUrl: 'https://github.com/khylerecana/WebDev_Projects/blob/main/bento-gallery.html'
             }
         ];
@@ -851,13 +851,14 @@
         function filterProjects(category) {
             let shown = 0;
             filterItems.forEach(item => {
-                const match = item.dataset.categories.split(' ').includes(category);
+                const tags = item.dataset.categories.split(' ');
+                const match = category === 'all' || tags.includes(category);
                 item.classList.toggle('d-none', !match);
                 if (match) {
                     const card = item.querySelector('.project-card');
                     card.style.setProperty('--stagger', `${shown * 80}ms`);
                     card.classList.remove('visible');
-                    void card.offsetWidth; // restart the fade-in
+                    void card.offsetWidth;
                     card.classList.add('visible');
                     shown++;
                 }
