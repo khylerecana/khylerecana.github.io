@@ -356,8 +356,8 @@
                     <div class="project-card animate-on-scroll h-100 d-flex flex-column">
                         <span class="project-label">Web Development</span>
                         <div class="project-image hero-bg bento-thumb">
-                            <!-- Same bento as the pop-up, shown as a small non-clickable thumbnail -->
-                            <iframe class="bento-thumb-frame" src="bento-gallery.html?embed=1"
+                            <iframe class="bento-thumb-frame"
+                                src="https://khylerecana.github.io/WebDev_Projects/bento-gallery.html?embed=1"
                                 title="Bento Layout thumbnail" tabindex="-1" loading="lazy"></iframe>
                         </div>
                         <div class="project-content d-flex flex-column flex-grow-1 justify-content-between">
@@ -405,8 +405,9 @@
                                 <i class="bi bi-chevron-right"></i>
                             </button>
                             <div class="gallery-indicators" id="galleryPagination"></div>
-                            <!-- Bento layout (shown instead of the images for the Bento Layout project) -->
-                            <iframe id="galleryBento" class="gallery-bento-frame" title="Bento Layout"></iframe>
+                            <iframe id="galleryBento" class="gallery-bento-frame"
+                                src="https://khylerecana.github.io/WebDev_Projects/bento-gallery.html?embed=1"
+                                title="Bento Layout"></iframe>
                         </div>
                         <div class="gallery-tags-bar" id="galleryTagsBar"></div>
                     </div>
@@ -609,7 +610,7 @@
                 type: 'Individual School Activity',
                 images: [],
                 liveUrl: '',
-                codeUrl: 'https://github.com/khylerecana/WebDev_Projects'
+                codeUrl: 'https://github.com/khylerecana/WebDev_Projects/blob/main/bento-gallery.html'
             }
         ];
 
@@ -632,7 +633,9 @@
             const isBento = !!p.bento;
             const bentoFrame = document.getElementById('galleryBento');
             document.querySelector('.gallery-img-area').classList.toggle('is-bento', isBento);
-            if (isBento && !bentoFrame.getAttribute('src')) bentoFrame.src = 'bento-gallery.html?embed=1';
+            if (isBento && !bentoFrame.getAttribute('src')) {
+                bentoFrame.src = 'https://khylerecana.github.io/WebDev_Projects/bento-gallery.html?embed=1';
+            }
             document.getElementById('galleryChallengeLabel').style.display = isBento ? 'none' : '';
             document.getElementById('galleryFeaturesLabel').style.display = isBento ? 'none' : '';
             document.getElementById('galleryFeatures').style.display = isBento ? 'none' : '';
@@ -724,7 +727,6 @@
                 notesEl.innerHTML = '';
             }
 
-            // Also call image rendering so the image panel actually populates!
             if (!isBento) {
                 buildIndicators(images.length);
                 updateImage(images);
@@ -874,11 +876,11 @@
             });
         });
 
-        // ── BENTO THUMBNAIL: scale the 960×540 bento to fit its card image ──
+        // ── BENTO THUMBNAIL ──
         const bentoThumbs = document.querySelectorAll('.bento-thumb');
         const fitBentoThumb = (box) => {
             const frame = box.querySelector('.bento-thumb-frame');
-            if (!box.clientWidth) return; // card is hidden by the filter
+            if (!box.clientWidth) return;
             frame.style.setProperty('--thumb-scale', Math.min(box.clientWidth / 960, box.clientHeight / 540));
         };
         const thumbObserver = new ResizeObserver(entries => entries.forEach(e => fitBentoThumb(e.target)));

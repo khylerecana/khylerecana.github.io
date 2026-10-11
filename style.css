@@ -1437,6 +1437,33 @@ img {
   display: block;
 }
 
+.bento-thumb {
+  background: var(--gradient-hero);
+}
+
+.bento-thumb-frame,
+.gallery-bento-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #0a0f1f;
+}
+
+.gallery-img-area.is-bento {
+  background: #0a0f1f;
+}
+
+.gallery-img-area.is-bento .gallery-img,
+.gallery-img-area.is-bento .gallery-nav,
+.gallery-img-area.is-bento .gallery-indicators {
+  display: none !important;
+}
+
+.gallery-img-area.is-bento .gallery-bento-frame {
+  display: block;
+}
+
 .gallery-nav {
   position: absolute;
   top: 50%;
