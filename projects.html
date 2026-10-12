@@ -601,7 +601,7 @@
             {
                 title: 'Bento Layout',
                 label: 'Web Development',
-                bento: true, 
+                bento: true,
                 challenge: 'Activity 1 in Web Development (3rd Year, 1st Sem)',
                 features: [],
                 tags: ['HTML', 'CSS', 'JavaScript'],
@@ -886,6 +886,14 @@
         };
         const thumbObserver = new ResizeObserver(entries => entries.forEach(e => fitBentoThumb(e.target)));
         bentoThumbs.forEach(box => thumbObserver.observe(box));
+
+        const galleryArea = document.querySelector('.gallery-img-area');
+        const fitGalleryBento = () => {
+            if (!galleryArea.classList.contains('is-bento') || !galleryArea.clientWidth) return;
+            galleryArea.style.setProperty('--thumb-scale',
+                Math.min(galleryArea.clientWidth / 960, galleryArea.clientHeight / 540));
+        };
+        new ResizeObserver(fitGalleryBento).observe(galleryArea);
     </script>
 
 </body>
