@@ -352,7 +352,7 @@
 
 
                 <!-- Project 8 -->
-                <div class="col-12 col-md-6 col-lg-4 d-none" data-categories="all webdev">
+                <div class="col-12 col-md-6 col-lg-4" data-categories="all webdev">
                     <div class="project-card animate-on-scroll h-100 d-flex flex-column">
                         <span class="project-label">Web Development</span>
                         <div class="project-image hero-bg bento-thumb">
@@ -362,15 +362,45 @@
                         </div>
                         <div class="project-content d-flex flex-column flex-grow-1 justify-content-between">
                             <div>
-                                <h3 class="project-title">Bento Layout</h3>
+                                <h3 class="project-title">Collection of my Designs</h3>
                                 <p class="project-description text-foreground">
-                                    Activity 1 in Web Development (3rd Year, 1st Sem)
+                                    Activity 1: Bento Layout
                                 </p>
                             </div>
                             <div>
                                 <p class="project-languages mb-1 small"><strong>Language Used:</strong> HTML, CSS,
                                     JavaScript</p>
                                 <p class="project-credit mb-3 small"><strong>Project Type:</strong> Individual School
+                                    Activity</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">
+                                        <i class="bi bi-arrow-right-short" aria-hidden="true"></i> Preview Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="col-12 col-md-6 col-lg-4" data-categories="all webdev">
+                    <div class="project-card animate-on-scroll h-100 d-flex flex-column">
+                        <span class="project-label">Web Development</span>
+                        <div class="project-image hero-bg bento-thumb">
+                            <iframe class="bento-thumb-frame"
+                                src="https://khylerecana.github.io/WebDev_Projects/Act%202_JSON/index.html"
+                                title="Careers in Information Technology preview" tabindex="-1"
+                                loading="lazy"></iframe>
+                        </div>
+                        <div class="project-content d-flex flex-column flex-grow-1 justify-content-between">
+                            <div>
+                                <h3 class="project-title">Careers in Information Technology</h3>
+                                <p class="project-description text-foreground">Activity 2: JSON Script</p>
+                            </div>
+                            <div>
+                                <p class="project-languages mb-1 small"><strong>Language Used:</strong> HTML, CSS,
+                                    JavaScript, JSON</p>
+                                <p class="project-credit mb-3 small"><strong>Project Type:</strong> Individual
                                     Activity</p>
                                 <div class="project-links">
                                     <a href="#" class="project-link">
@@ -405,9 +435,8 @@
                                 <i class="bi bi-chevron-right"></i>
                             </button>
                             <div class="gallery-indicators" id="galleryPagination"></div>
-                            <iframe id="galleryBento" class="gallery-bento-frame"
-                                src="https://khylerecana.github.io/WebDev_Projects/Act%201_Bento/bento-gallery.html?embed=1"
-                                title="Bento Layout"></iframe>
+                            <iframe id="galleryBento" class="gallery-bento-frame" src="about:blank"
+                                title="Project live preview"></iframe>
                         </div>
                         <div class="gallery-tags-bar" id="galleryTagsBar"></div>
                     </div>
@@ -599,10 +628,11 @@
                 liveUrl: '', codeUrl: ''
             },
             {
-                title: 'Bento Layout',
+                title: 'Collection of My Designs',
                 label: 'Web Development',
                 bento: true,
-                challenge: 'Activity 1 in Web Development (3rd Year, 1st Sem)',
+                embedUrl: 'https://khylerecana.github.io/WebDev_Projects/Act%201_Bento/bento-gallery.html?embed=1',
+                challenge: 'Activity 1: Bento Layout',
                 features: [],
                 tags: ['HTML', 'CSS', 'JavaScript'],
                 credit: 'HTML, CSS, JavaScript',
@@ -611,6 +641,20 @@
                 images: [],
                 liveUrl: 'https://khylerecana.github.io/WebDev_Projects/Act%201_Bento/bento-gallery.html',
                 codeUrl: 'https://github.com/khylerecana/WebDev_Projects/blob/main/Act%201_Bento/bento-gallery.html'
+            },
+            {
+                title: 'Careers in Information Technology',
+                label: 'Web Development',
+                embedUrl: 'https://khylerecana.github.io/WebDev_Projects/Act%202_JSON/index.html',
+                challenge: 'Activity 2: JSON Script',
+                features: [],
+                tags: ['HTML', 'CSS', 'JavaScript', 'JSON'],
+                credit: 'HTML, CSS, JavaScript, JSON',
+                creditLabel: 'Language Used',
+                type: 'Individual Activity',
+                images: [],
+                liveUrl: 'https://khylerecana.github.io/WebDev_Projects/Act%202_JSON/index.html',
+                codeUrl: 'https://github.com/khylerecana/WebDev_Projects/tree/main/Act%202_JSON'
             }
         ];
 
@@ -631,14 +675,17 @@
             const images = p.images;
 
             const isBento = !!p.bento;
+            const isEmbedded = !!p.embedUrl;
             const bentoFrame = document.getElementById('galleryBento');
-            document.querySelector('.gallery-img-area').classList.toggle('is-bento', isBento);
-            if (isBento && !bentoFrame.getAttribute('src')) {
-                bentoFrame.src = 'https://khylerecana.github.io/WebDev_Projects/bento-gallery.html?embed=1';
-            }
+            const galleryArea = document.querySelector('.gallery-img-area');
+            galleryArea.classList.toggle('is-bento', isBento);
+            galleryArea.classList.toggle('is-embed', isEmbedded);
+            bentoFrame.src = p.embedUrl || 'about:blank';
+            bentoFrame.title = p.title + ' live preview';
             document.getElementById('galleryChallengeLabel').style.display = isBento ? 'none' : '';
-            document.getElementById('galleryFeaturesLabel').style.display = isBento ? 'none' : '';
-            document.getElementById('galleryFeatures').style.display = isBento ? 'none' : '';
+            const hasFeatures = (p.features || []).length > 0;
+            document.getElementById('galleryFeaturesLabel').style.display = isBento || !hasFeatures ? 'none' : '';
+            document.getElementById('galleryFeatures').style.display = isBento || !hasFeatures ? 'none' : '';
 
             document.getElementById('galleryLabel').textContent = p.label;
             document.getElementById('galleryTitle').textContent = p.title;
@@ -727,7 +774,7 @@
                 notesEl.innerHTML = '';
             }
 
-            if (!isBento) {
+            if (!isEmbedded) {
                 buildIndicators(images.length);
                 updateImage(images);
             }
@@ -889,7 +936,7 @@
 
         const galleryArea = document.querySelector('.gallery-img-area');
         const fitGalleryBento = () => {
-            if (!galleryArea.classList.contains('is-bento') || !galleryArea.clientWidth) return;
+            if (!galleryArea.classList.contains('is-embed') || !galleryArea.clientWidth) return;
             galleryArea.style.setProperty('--thumb-scale',
                 Math.min(galleryArea.clientWidth / 960, galleryArea.clientHeight / 540));
         };

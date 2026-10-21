@@ -1466,13 +1466,17 @@ img {
   background: #0a0f1f;
 }
 
-.gallery-img-area.is-bento .gallery-img,
-.gallery-img-area.is-bento .gallery-nav,
-.gallery-img-area.is-bento .gallery-indicators {
+.gallery-img-area.is-embed {
+  background: #0a0f1f;
+}
+
+.gallery-img-area.is-embed .gallery-img,
+.gallery-img-area.is-embed .gallery-nav,
+.gallery-img-area.is-embed .gallery-indicators {
   display: none !important;
 }
 
-.gallery-img-area.is-bento .gallery-bento-frame {
+.gallery-img-area.is-embed .gallery-bento-frame {
   display: block;
 }
 
