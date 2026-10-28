@@ -412,6 +412,35 @@
                     </div>
                 </div>
 
+                <!-- Project 10 -->
+                <div class="col-12 col-md-6 col-lg-4" data-categories="all webdev">
+                    <div class="project-card animate-on-scroll h-100 d-flex flex-column">
+                        <span class="project-label">Web Development</span>
+                        <div class="project-image hero-bg bento-thumb">
+                            <iframe class="bento-thumb-frame"
+                                src="https://khylerecana.github.io/WebDev_Projects/Act%203_Public-API/index.html"
+                                title="Valorant Codex preview" tabindex="-1" loading="lazy"></iframe>
+                        </div>
+                        <div class="project-content d-flex flex-column flex-grow-1 justify-content-between">
+                            <div>
+                                <h3 class="project-title">Valorant Codex</h3>
+                                <p class="project-description text-foreground">Activity 3: Public API</p>
+                            </div>
+                            <div>
+                                <p class="project-languages mb-1 small"><strong>Language Used:</strong> HTML, CSS,
+                                    JavaScript</p>
+                                <p class="project-credit mb-3 small"><strong>Project Type:</strong> Individual
+                                    Activity</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">
+                                        <i class="bi bi-arrow-right-short" aria-hidden="true"></i> Preview Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -453,7 +482,6 @@
                         </div>
 
                         <div class="gallery-right-body flex-grow-1">
-                            <p class="gallery-section-label" id="galleryChallengeLabel">The Challenge</p>
                             <p class="gallery-challenge" id="galleryChallenge"></p>
                             <p class="gallery-section-label mt-3" id="galleryFeaturesLabel">Key Features Built</p>
                             <ul class="gallery-features list-unstyled" id="galleryFeatures"></ul>
@@ -655,6 +683,20 @@
                 images: [],
                 liveUrl: 'https://khylerecana.github.io/WebDev_Projects/Act%202_JSON/index.html',
                 codeUrl: 'https://github.com/khylerecana/WebDev_Projects/tree/main/Act%202_JSON'
+            },
+            {
+                title: 'Valorant Codex',
+                label: 'Web Development',
+                embedUrl: 'https://khylerecana.github.io/WebDev_Projects/Act%203_Public-API/index.html',
+                challenge: 'Activity 3: Public API',
+                features: [],
+                tags: ['HTML', 'CSS', 'JavaScript'],
+                credit: 'HTML, CSS, JavaScript',
+                creditLabel: 'Language Used',
+                type: 'Individual Activity',
+                images: [],
+                liveUrl: 'https://khylerecana.github.io/WebDev_Projects/Act%203_Public-API/index.html',
+                codeUrl: 'https://github.com/khylerecana/WebDev_Projects/tree/main/Act%203_Public-API'
             }
         ];
 
@@ -682,7 +724,6 @@
             galleryArea.classList.toggle('is-embed', isEmbedded);
             bentoFrame.src = p.embedUrl || 'about:blank';
             bentoFrame.title = p.title + ' live preview';
-            document.getElementById('galleryChallengeLabel').style.display = isBento ? 'none' : '';
             const hasFeatures = (p.features || []).length > 0;
             document.getElementById('galleryFeaturesLabel').style.display = isBento || !hasFeatures ? 'none' : '';
             document.getElementById('galleryFeatures').style.display = isBento || !hasFeatures ? 'none' : '';
